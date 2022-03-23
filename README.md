@@ -1,2 +1,2 @@
-# swift_todoapp_realm
-testing realm in a simple project.
+# swift_todo_app
+basic To Do List app.
