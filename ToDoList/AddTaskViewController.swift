@@ -14,12 +14,17 @@ class AddTaskViewController: UIViewController {
     var activeTextField: UITextField?
     var activeTextView: UITextView?
     
+    //MARK: Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         handleNavigationBarSettings()
         handleTaskDetailsBoxSettings()
         handleToolBarSettings()
-        
+        handleDelegates()
+    }
+    
+    private func handleDelegates() {
         taskNameTextField.delegate = self
         taskDetailsTextView.delegate = self
     }
@@ -34,6 +39,8 @@ class AddTaskViewController: UIViewController {
         deregisterForKeyboardNotification()
     }
     
+    //MARK: Actions
+    
     @objc private func cancelButtonDidTouch() {
         dismiss(animated: true, completion: nil)
     }
@@ -42,23 +49,20 @@ class AddTaskViewController: UIViewController {
         view.endEditing(true)
     }
     
-    @IBAction func addTaskDidTouch(_ sender: Any) {
+    @IBAction private func addTaskDidTouch(_ sender: Any) {
         guard let taskName = taskNameTextField.text, !taskName.isEmpty else {
-            reportError(title: "Ivalid Task Name",
-                        message: "Task name is required")
+            reportError(title: "Ivalid Task Name", message: "Task name is required")
             return
         }
         
         guard let taskDetails = taskDetailsTextView.text, !taskDetails.isEmpty else {
-            reportError(title: "Invalid Task Details",
-                        message: "Task details are required")
+            reportError(title: "Invalid Task Details", message: "Task details are required")
             return
         }
         
         let completionDate: Date = taskCompletionDatePicker.date
         if completionDate < Date() {
-            reportError(title: "Invalid Date",
-                        message: "Date must be in the future")
+            reportError(title: "Invalid Date", message: "Date must be in the future")
             return
         }
         
@@ -68,7 +72,6 @@ class AddTaskViewController: UIViewController {
         }
         
         let nextTaskId = (realm.objects(Task.self).max(ofProperty: "id") as Int? ?? 0) + 1
-        
         let newTask = Task()
         
         newTask.id = nextTaskId
@@ -88,12 +91,11 @@ class AddTaskViewController: UIViewController {
             return
         }
         
-//        let toDoItem = ToDoItemModel(name: taskName, details: taskDetails, completionDate: completionDate)
-        
         NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "com.todolistapp.addtask"), object: nil)
-        
         dismiss(animated: true, completion: nil)
     }
+    
+    //MARK: Methods
     
     private func reportError(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -145,8 +147,7 @@ extension AddTaskViewController {
             if aRect.contains(activeTextField!.frame.origin) {
                 self.scrollView.scrollRectToVisible(activeTextField!.frame, animated: true)
             }
-        }
-        else if activeTextView != nil {
+        } else if activeTextView != nil {
             let textViewPoint: CGPoint = CGPoint(x: activeTextView!.frame.origin.x,
                                                  y: activeTextView!.frame.size.height + activeTextView!.frame.size.height)
             

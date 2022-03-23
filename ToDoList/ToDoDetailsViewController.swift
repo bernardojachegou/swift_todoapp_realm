@@ -10,8 +10,9 @@ class ToDoDetailsViewController: UIViewController {
     
     var toDoItem: Task!
     var toDoIndex: Int!
-    
     weak var delegate: ToDoListDelegate?
+    
+    //MARK: Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,14 +29,14 @@ class ToDoDetailsViewController: UIViewController {
         taskCompletionDate.text = taskDate
     }
     
-    func disableButton() {
+    //MARK: Actions
+    
+    private func disableButton() {
         taskCompletionButton.backgroundColor = UIColor.gray
         taskCompletionButton.isEnabled = false
     }
     
     @IBAction func taskDidComplete(_ sender: Any) {
-        
-        //        toDoItem.isComplete = true
         
         guard let realm = LocalDatabaseManager.realm else {
             return
@@ -51,7 +52,6 @@ class ToDoDetailsViewController: UIViewController {
         }
         
         delegate?.update()
-        
         disableButton()
     }
     

@@ -29,21 +29,3 @@ class Task: Object {
     @objc dynamic var startDate = NSDate()
     @objc dynamic var isComplete = false
 }
-
-//struct ToDoItemModel {
-//    var name: String
-//    var details: String
-//    var completionDate: Date
-//    var startDate: Date
-//    var isComplete: Bool
-//
-//    init(name: String, details: String, completionDate: Date) {
-//        self.name = name
-//        self.details = details
-//        self.completionDate = completionDate
-//        self.isComplete = false
-//        self.startDate = Date()
-//    }
-//}
-
-

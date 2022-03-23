@@ -3,63 +3,26 @@ import UIKit
 import RealmSwift
 
 protocol ToDoListDelegate: AnyObject {
-    
     func update()
 }
 
 class ToDoListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    
-    //    var toDoItems: [ToDoItemModel] = [ToDoItemModel]()
-    
     var toDoItems: Results<Task>? {
         get {
             guard let realm = LocalDatabaseManager.realm else {
                 return nil
             }
-            
             return realm.objects(Task.self)
         }
     }
     
+    //MARK: Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        tableView.tableFooterView = UIView()
-        
-        title = "Minhas Anotações"
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTapped))
-        
-        //        let testItem = ToDoItemModel(name: "MICHEL Item", details: "test details", completionDate: Date())
-        //        self.toDoItems.append(testItem)
-        //
-        //        let testItem2 = ToDoItemModel(name: "Test Item 2", details: "test details 2", completionDate: Date())
-        //        self.toDoItems.append(testItem2)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(addNewTask(_ :)), name: NSNotification.Name.init(rawValue: "com.todolistapp.addtask"), object: nil)
-    }
-    
-    @objc private func addNewTask(_ notification: NSNotification) {
-        
-        //        var toDoItem: ToDoItemModel!
-        //
-        //        if let task = notification.object as? ToDoItemModel {
-        //            toDoItem = task
-        //        }
-        //        else {
-        //            return
-        //        }
-        //
-        //        toDoItems.append(toDoItem)
-        //        toDoItems.sort(by: {$0.completionDate > $1.completionDate})
-        tableView.reloadData()
+        setupView()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -68,12 +31,32 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.setEditing(false, animated: false)
     }
     
-    @objc func addTapped() {
+    //MARK: Custom Methods
+    
+    private func setupView() {
+        title = "Minhas Anotações"
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTapped))
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(addNewTask(_ :)), name: NSNotification.Name.init(rawValue: "com.todolistapp.addtask"), object: nil)
+    }
+    
+    //MARK: Actions
+    
+    @objc private func addNewTask(_ notification: NSNotification) {
+        tableView.reloadData()
+    }
+    
+    @objc private func addTapped() {
         performSegue(withIdentifier: "AddTaskSegue", sender: nil)
         
     }
     
-    @objc func editTapped() {
+    @objc private func editTapped() {
         
         tableView.setEditing(!tableView.isEditing, animated: true)
         
@@ -86,15 +69,12 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, UITableVi
         
     }
     
+    //MARK: TableView Methods
+    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
             
-            //            self.toDoItems.remove(at: indexPath.row)
-            
-            guard let realm = LocalDatabaseManager.realm else {
-                return
-            }
+            guard let realm = LocalDatabaseManager.realm else { return }
             
             do {
                 try realm.write {
@@ -104,17 +84,13 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, UITableVi
                 print(error.localizedDescription)
                 return
             }
-            
             self.tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
         }
-        
         return [delete]
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let selectedItem = toDoItems![indexPath.row]
-        
         let toDoTuple = (selectedItem, indexPath.row)
         
         performSegue(withIdentifier: "TaskDetailsSegue", sender: toDoTuple)
@@ -142,7 +118,6 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, UITableVi
             destinationVC.delegate = self
             destinationVC.toDoItem = toDoItem.0
             destinationVC.toDoIndex = toDoItem.1
-            
         }
     }
     
@@ -152,11 +127,10 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, UITableVi
     
 }
 
+//MARK: Protocol
+
 extension ToDoListViewController: ToDoListDelegate {
-    
     func update() {
-        
-        //        toDoItems[index] = task
         tableView.reloadData()
     }
 }
