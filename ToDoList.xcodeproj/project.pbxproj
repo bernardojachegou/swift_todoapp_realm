@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		7C765C44618E16724AB9D20B /* Pods_ToDoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F4B1AF7AB2BB5879A528B27 /* Pods_ToDoList.framework */; };
+		992C7EDE27ED099A00B6B525 /* UICustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992C7EDD27ED099A00B6B525 /* UICustomTextField.swift */; };
 		995AFDC227EC0A880053EA88 /* UICustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995AFDC127EC0A880053EA88 /* UICustomColors.swift */; };
+		999D05CE27EC95FB00AFB6B0 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999D05CC27EC95FB00AFB6B0 /* CustomTableViewCell.swift */; };
+		999D05CF27EC95FB00AFB6B0 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 999D05CD27EC95FB00AFB6B0 /* CustomTableViewCell.xib */; };
 		E1A2C07C21AEF8170091E41F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2C07B21AEF8170091E41F /* AppDelegate.swift */; };
 		E1A2C08121AEF8170091E41F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A2C07F21AEF8170091E41F /* Main.storyboard */; };
 		E1A2C08321AEF81B0091E41F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1A2C08221AEF81B0091E41F /* Assets.xcassets */; };
@@ -23,7 +26,10 @@
 		3D1C416D842282CD16111AA6 /* Pods-ToDoList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoList.debug.xcconfig"; path = "Target Support Files/Pods-ToDoList/Pods-ToDoList.debug.xcconfig"; sourceTree = "<group>"; };
 		456E70DA25EEDE4AEC6923A2 /* Pods-ToDoList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoList.release.xcconfig"; path = "Target Support Files/Pods-ToDoList/Pods-ToDoList.release.xcconfig"; sourceTree = "<group>"; };
 		7F4B1AF7AB2BB5879A528B27 /* Pods_ToDoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		992C7EDD27ED099A00B6B525 /* UICustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICustomTextField.swift; sourceTree = "<group>"; };
 		995AFDC127EC0A880053EA88 /* UICustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICustomColors.swift; sourceTree = "<group>"; };
+		999D05CC27EC95FB00AFB6B0 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		999D05CD27EC95FB00AFB6B0 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		E1A2C07821AEF8170091E41F /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1A2C07B21AEF8170091E41F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1A2C08021AEF8170091E41F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -97,8 +103,18 @@
 			isa = PBXGroup;
 			children = (
 				995AFDC127EC0A880053EA88 /* UICustomColors.swift */,
+				992C7EDD27ED099A00B6B525 /* UICustomTextField.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		999D05D027ECA22E00AFB6B0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				999D05CC27EC95FB00AFB6B0 /* CustomTableViewCell.swift */,
+				999D05CD27EC95FB00AFB6B0 /* CustomTableViewCell.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E1A2C06F21AEF8170091E41F = {
@@ -128,6 +144,7 @@
 				995AFDC027EC0A5E0053EA88 /* Controllers */,
 				995AFDBF27EC0A550053EA88 /* Models */,
 				995AFDC327EC0E980053EA88 /* Extensions */,
+				999D05D027ECA22E00AFB6B0 /* Views */,
 			);
 			path = ToDoList;
 			sourceTree = "<group>";
@@ -195,6 +212,7 @@
 			files = (
 				E1A2C08621AEF81B0091E41F /* LaunchScreen.storyboard in Resources */,
 				E1A2C08321AEF81B0091E41F /* Assets.xcassets in Resources */,
+				999D05CF27EC95FB00AFB6B0 /* CustomTableViewCell.xib in Resources */,
 				E1A2C08121AEF8170091E41F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,6 +269,8 @@
 				E1A2C09221AF01770091E41F /* ToDoItemModel.swift in Sources */,
 				E1A2C09021AEFBDB0091E41F /* ToDoDetailsViewController.swift in Sources */,
 				995AFDC227EC0A880053EA88 /* UICustomColors.swift in Sources */,
+				999D05CE27EC95FB00AFB6B0 /* CustomTableViewCell.swift in Sources */,
+				992C7EDE27ED099A00B6B525 /* UICustomTextField.swift in Sources */,
 				E1A2C08E21AEFBA00091E41F /* ToDoListViewController.swift in Sources */,
 				E1A2C07C21AEF8170091E41F /* AppDelegate.swift in Sources */,
 				E1A2C09421AF07410091E41F /* AddTaskViewController.swift in Sources */,
@@ -405,6 +425,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K4939JV3B5;
 				INFOPLIST_FILE = ToDoList/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -424,6 +445,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K4939JV3B5;
 				INFOPLIST_FILE = ToDoList/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

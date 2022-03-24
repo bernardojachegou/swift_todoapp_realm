@@ -9,6 +9,8 @@ protocol ToDoListDelegate: AnyObject {
 class ToDoListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    
+    
     var toDoItems: Results<Task>? {
         get {
             guard let realm = LocalDatabaseManager.realm else {
@@ -19,10 +21,10 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     //MARK: Life Cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        self.registerTableViewCells()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -32,7 +34,6 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     //MARK: Custom Methods
-    
     private func setupView() {
         title = "Minhas Anotações"
         
@@ -45,8 +46,12 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, UITableVi
         NotificationCenter.default.addObserver(self, selector: #selector(addNewTask(_ :)), name: NSNotification.Name.init(rawValue: "com.todolistapp.addtask"), object: nil)
     }
     
-    //MARK: Actions
+    private func registerTableViewCells() {
+        let customTaskCell = UINib(nibName: "CustomTableViewCell", bundle: nil)
+        self.tableView.register(customTaskCell, forCellReuseIdentifier: "CustomTableViewCell")
+    }
     
+    //MARK: Actions
     @objc private func addNewTask(_ notification: NSNotification) {
         tableView.reloadData()
     }
@@ -70,7 +75,6 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     //MARK: TableView Methods
-    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
             
@@ -102,12 +106,14 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let toDoItem = toDoItems![indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItem")!
         
-        cell.textLabel?.text = toDoItem.name
-        cell.detailTextLabel?.text = toDoItem.isComplete ? "Finalizado" : "A Fazer"
-        
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell") as? CustomTableViewCell {
+            cell.taskNameLabel.text = toDoItem.name
+            cell.taskDescriptionLabel.text = toDoItem.isComplete ? "Finalizado" : "A Fazer"
+            
+            return cell
+        }
+        return UITableViewCell()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -128,7 +134,6 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, UITableVi
 }
 
 //MARK: Protocol
-
 extension ToDoListViewController: ToDoListDelegate {
     func update() {
         tableView.reloadData()

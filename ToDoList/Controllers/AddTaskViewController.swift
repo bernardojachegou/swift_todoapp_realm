@@ -15,7 +15,6 @@ class AddTaskViewController: UIViewController {
     var activeTextView: UITextView?
     
     //MARK: Life Cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         handleNavigationBarSettings()
@@ -41,7 +40,6 @@ class AddTaskViewController: UIViewController {
     }
     
     //MARK: Actions
-    
     @objc private func cancelButtonDidTouch() {
         dismiss(animated: true, completion: nil)
     }
@@ -97,7 +95,6 @@ class AddTaskViewController: UIViewController {
     }
     
     //MARK: Methods
-    
     private func reportError(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
@@ -111,7 +108,6 @@ class AddTaskViewController: UIViewController {
 }
 
 //MARK: Keyboard Settings
-
 extension AddTaskViewController {
     private func registerForKeyboardNotification() {
         NotificationCenter.default.addObserver(self,
@@ -173,7 +169,6 @@ extension AddTaskViewController {
 }
 
 //MARK: UI Factory
-
 extension AddTaskViewController {
     private func handleNavigationBarSettings() {
         let navigationItem = UINavigationItem(title: "Adicionar tarefa")
@@ -192,11 +187,13 @@ extension AddTaskViewController {
         taskNameTextField.layer.borderColor = UIColor.detailsColor.cgColor
         taskNameTextField.layer.borderWidth = CGFloat(1)
         taskNameTextField.layer.cornerRadius = CGFloat(10)
+        taskNameTextField.setLeftPaddingPoints(10)
+        taskNameTextField.setRightPaddingPoints(10)
     }
     
     private func handleToolBarSettings() {
         toolBarDone.sizeToFit()
-        toolBarDone.barTintColor = UIColor.red
+        toolBarDone.barTintColor = UIColor.detailsColor
         toolBarDone.isTranslucent = false
         
         let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,
@@ -209,7 +206,7 @@ extension AddTaskViewController {
                                             action: #selector(doneButtonTapped))
         
         barButtonDone.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17),
-                                              NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
+                                              NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
         
         toolBarDone.items = [flexSpace, barButtonDone, flexSpace]
         taskNameTextField.inputAccessoryView = toolBarDone

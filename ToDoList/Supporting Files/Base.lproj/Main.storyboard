@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cQz-Ft-gKs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cQz-Ft-gKs">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -46,7 +46,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="SecondaryColor"/>
-                                        <color key="tintColor" name="AppWhiteColor"/>
+                                        <color key="tintColor" name="PrimaryColor"/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -75,7 +75,7 @@
         <scene sceneID="4zj-po-32E">
             <objects>
                 <viewController id="Xu4-Sk-1d2" customClass="AddTaskViewController" customModule="ToDoList" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="2OX-u0-xO0">
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="2OX-u0-xO0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -117,16 +117,16 @@
                                                 <color key="textColor" name="AppWhiteColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Hyj-jh-N1W">
+                                            <datePicker clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" highlighted="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Hyj-jh-N1W">
                                                 <rect key="frame" x="20" y="159" width="374" height="50"/>
-                                                <color key="backgroundColor" name="DetailsColor"/>
-                                                <color key="tintColor" name="AppWhiteColor"/>
+                                                <color key="tintColor" name="DetailsColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="14Y-ab-yNT"/>
                                                 </constraints>
+                                                <locale key="locale" localeIdentifier="pt_BR"/>
                                             </datePicker>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkr-2f-uOL">
-                                                <rect key="frame" x="20" y="670" width="374" height="50"/>
+                                                <rect key="frame" x="20" y="680" width="374" height="50"/>
                                                 <color key="backgroundColor" name="DetailsColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Ncn-ds-6fH"/>
@@ -171,7 +171,7 @@
                                             <constraint firstItem="Hyj-jh-N1W" firstAttribute="top" secondItem="RO9-us-Uxy" secondAttribute="bottom" constant="15" id="ZBi-cH-ffB"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aCj-Yg-4wa" secondAttribute="trailing" constant="10" id="bem-U1-SxL"/>
                                             <constraint firstItem="smM-xy-Dze" firstAttribute="top" secondItem="2pN-FO-F4l" secondAttribute="top" constant="30" id="cQe-sp-5aQ"/>
-                                            <constraint firstAttribute="bottom" secondItem="dkr-2f-uOL" secondAttribute="bottom" constant="50" id="cSb-rg-DBu"/>
+                                            <constraint firstAttribute="bottom" secondItem="dkr-2f-uOL" secondAttribute="bottom" constant="40" id="cSb-rg-DBu"/>
                                             <constraint firstItem="smM-xy-Dze" firstAttribute="leading" secondItem="2pN-FO-F4l" secondAttribute="leading" constant="20" id="f8T-JX-xHf"/>
                                             <constraint firstItem="aCj-Yg-4wa" firstAttribute="leading" secondItem="2pN-FO-F4l" secondAttribute="leading" constant="20" id="sIJ-uO-eWB"/>
                                             <constraint firstAttribute="trailing" secondItem="Ol3-Hn-WtN" secondAttribute="trailing" constant="20" id="vnF-Gq-Up2"/>
@@ -250,7 +250,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <state key="normal" title="Finalizar">
-                                    <color key="titleColor" name="AppWhiteColor"/>
+                                    <color key="titleColor" systemColor="labelColor"/>
                                     <color key="titleShadowColor" name="DetailsColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>

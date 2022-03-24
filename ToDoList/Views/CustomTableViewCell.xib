@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="CustomTableViewCell" customModule="ToDoList" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3xw-Lm-jIC">
+                        <rect key="frame" x="10" y="10" width="300" height="60"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGh-x4-d29">
+                                <rect key="frame" x="10" y="10" width="85" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" name="AppWhiteColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Task description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CxC-w4-a3g">
+                                <rect key="frame" x="10" y="35.5" width="280" height="15"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                <color key="textColor" name="AppWhiteColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="SecondaryColor"/>
+                        <color key="tintColor" name="PrimaryColor"/>
+                        <constraints>
+                            <constraint firstItem="TGh-x4-d29" firstAttribute="top" secondItem="3xw-Lm-jIC" secondAttribute="top" constant="10" id="Idq-Mv-vB6"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TGh-x4-d29" secondAttribute="trailing" constant="10" id="NjE-dN-0kS"/>
+                            <constraint firstItem="CxC-w4-a3g" firstAttribute="leading" secondItem="3xw-Lm-jIC" secondAttribute="leading" constant="10" id="Px8-oj-naI"/>
+                            <constraint firstAttribute="bottom" secondItem="CxC-w4-a3g" secondAttribute="bottom" constant="9.5" id="Zm4-jz-aJB"/>
+                            <constraint firstItem="TGh-x4-d29" firstAttribute="leading" secondItem="3xw-Lm-jIC" secondAttribute="leading" constant="10" id="b9C-wQ-55b"/>
+                            <constraint firstItem="CxC-w4-a3g" firstAttribute="top" secondItem="TGh-x4-d29" secondAttribute="bottom" constant="5" id="bcL-eo-gVS"/>
+                            <constraint firstAttribute="trailing" secondItem="CxC-w4-a3g" secondAttribute="trailing" constant="10" id="xgf-u1-kcA"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                <integer key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" name="PrimaryColor"/>
+                <constraints>
+                    <constraint firstItem="3xw-Lm-jIC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="KwE-lm-fe1"/>
+                    <constraint firstItem="3xw-Lm-jIC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="PiK-Ie-zMD"/>
+                    <constraint firstAttribute="bottom" secondItem="3xw-Lm-jIC" secondAttribute="bottom" constant="10" id="vSU-TI-OKV"/>
+                    <constraint firstAttribute="trailing" secondItem="3xw-Lm-jIC" secondAttribute="trailing" constant="10" id="xhE-eQ-aPT"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" name="PrimaryColor"/>
+            <color key="tintColor" name="PrimaryColor"/>
+            <connections>
+                <outlet property="taskDescriptionLabel" destination="CxC-w4-a3g" id="rKQ-Ws-cti"/>
+                <outlet property="taskNameLabel" destination="TGh-x4-d29" id="5xb-ux-cu6"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="99.776785714285708"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="AppWhiteColor">
+            <color red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PrimaryColor">
+            <color red="0.12941176470588237" green="0.19607843137254902" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondaryColor">
+            <color red="0.24313725490196078" green="0.28627450980392155" blue="0.47843137254901963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
