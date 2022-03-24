@@ -20,6 +20,7 @@ class AddTaskViewController: UIViewController {
         super.viewDidLoad()
         handleNavigationBarSettings()
         handleTaskDetailsBoxSettings()
+        handleTaskNameBoxSettings()
         handleToolBarSettings()
         handleDelegates()
     }
@@ -181,9 +182,16 @@ extension AddTaskViewController {
     }
     
     private func handleTaskDetailsBoxSettings() {
-        taskDetailsTextView.layer.borderColor = UIColor.gray.cgColor
+        taskDetailsTextView.layer.borderColor = UIColor.detailsColor.cgColor
         taskDetailsTextView.layer.borderWidth = CGFloat(1)
-        taskDetailsTextView.layer.cornerRadius = CGFloat(3)
+        taskDetailsTextView.layer.cornerRadius = CGFloat(15)
+        taskDetailsTextView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 5, right: 5)
+    }
+    
+    private func handleTaskNameBoxSettings() {
+        taskNameTextField.layer.borderColor = UIColor.detailsColor.cgColor
+        taskNameTextField.layer.borderWidth = CGFloat(1)
+        taskNameTextField.layer.cornerRadius = CGFloat(10)
     }
     
     private func handleToolBarSettings() {

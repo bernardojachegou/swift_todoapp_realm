@@ -17,6 +17,8 @@ class ToDoDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        handleTaskDetailsBoxSettings()
+        
         taskTitleLabel.text = toDoItem.name
         taskDetailsTextView.text = toDoItem.details
         if toDoItem.isComplete {
@@ -30,11 +32,6 @@ class ToDoDetailsViewController: UIViewController {
     }
     
     //MARK: Actions
-    
-    private func disableButton() {
-        taskCompletionButton.backgroundColor = UIColor.gray
-        taskCompletionButton.isEnabled = false
-    }
     
     @IBAction func taskDidComplete(_ sender: Any) {
         
@@ -55,4 +52,17 @@ class ToDoDetailsViewController: UIViewController {
         disableButton()
     }
     
+    //MARK: Methods
+    private func disableButton() {
+        taskCompletionButton.isHidden = true
+    }
+    
+}
+
+extension ToDoDetailsViewController {
+    private func handleTaskDetailsBoxSettings() {
+        taskDetailsTextView.layer.borderColor = UIColor.detailsColor.cgColor
+        taskDetailsTextView.layer.borderWidth = CGFloat(1)
+        taskDetailsTextView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 5, right: 5)
+    }
 }
